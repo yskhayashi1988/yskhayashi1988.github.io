@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Portfolio</title>
+    <style>
+        /* ページ全体の見た目を整える設定 */
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        .lang-btn { background: #333; color: #fff; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; }
+        section { margin: 30px 0; }
+        h2 { border-left: 5px solid #333; padding-left: 10px; color: #111; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        /* 言語切り替えのための設定（最初は日本語を隠す） */
+        .lang-jp { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- ページの一番上のタイトル -->
+        <h1 class="lang-en">Researcher Portfolio</h1>
+        <h1 class="lang-jp">研究者ポートフォリオ</h1>
+        <!-- 言語を切り替えるボタン -->
+        <button class="lang-btn" onclick="toggleLanguage()">JP / EN</button>
+    </header>
+
+    <!-- ① プロフィール（自己紹介） -->
+    <section>
+        <h2>Biography</h2>
+        <div class="lang-en">
+            <p>Welcome to my research page. I am a researcher specializing in [Your Field]. Currently, I am preparing for studying abroad to pursue further research.</p>
+        </div>
+        <div class="lang-jp">
+            <p>私の研究ページへようこそ。私は[研究分野]を専門とする研究者です。現在、さらなる研究のために留学の準備を進めています。</p>
+        </div>
+    </section>
+
+    <!-- ② 研究テーマ（関心のある分野） -->
+    <section>
+        <h2>Research Interests</h2>
+        <div class="lang-en">
+            <ul>
+                <li>Research Topic 1: [Brief explanation]</li>
+                <li>Research Topic 2: [Brief explanation]</li>
+            </ul>
+        </div>
+        <div class="lang-jp">
+            <ul>
+                <li>研究テーマ1: [簡単な説明]</li>
+                <li>研究テーマ2: [簡単な説明]</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ③ 研究実績（論文や発表など） -->
+    <section>
+        <h2>Publications & Accomplishments</h2>
+        <div class="lang-en">
+            <ul>
+                <li><strong>Paper Title 1</strong>, Authors, Journal Name, Year.</li>
+                <li><strong>Conference Presentation 1</strong>, Event Name, Location, Year.</li>
+            </ul>
+        </div>
+        <div class="lang-jp">
+            <ul>
+                <li><strong>論文タイトル1</strong>, 著者名, 掲載雑誌名, 発表年.</li>
+                <li><strong>学会発表1</strong>, 学会名, 開催地, 発表年.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ④ 連絡先（メールやSNS） -->
+    <section>
+        <h2>Contact</h2>
+        <div class="lang-en">
+            <p>Email: your-email [at] example.com</p>
+        </div>
+        <div class="lang-jp">
+            <p>メールアドレス: your-email [at] example.com</p>
+        </div>
+    </section>
+
+    <!-- ボタンを押したときに英語と日本語を入れ替える仕組み（JavaScript） -->
+    <script>
+        function toggleLanguage() {
+            var enElements = document.querySelectorAll('.lang-en');
+            var jpElements = document.querySelectorAll('.lang-jp');
+            
+            // 英語が表示されているときは日本語に、そうでないときは英語に切り替える
+            if (enElements[0].style.display !== 'none') {
+                enElements.forEach(el => el.style.display = 'none');
+                jpElements.forEach(el => el.style.display = 'block');
+                document.getElementsByTagName('h2')[0].innerText = "略歴";
+                document.getElementsByTagName('h2')[1].innerText = "研究関心・テーマ";
+                document.getElementsByTagName('h2')[2].innerText = "研究実績（論文・学会発表）";
+                document.getElementsByTagName('h2')[3].innerText = "連絡先";
+            } else {
+                enElements.forEach(el => el.style.display = 'block');
+                jpElements.forEach(el => el.style.display = 'none');
+                document.getElementsByTagName('h2')[0].innerText = "Biography";
+                document.getElementsByTagName('h2')[1].innerText = "Research Interests";
+                document.getElementsByTagName('h2')[2].innerText = "Publications & Accomplishments";
+                document.getElementsByTagName('h2')[3].innerText = "Contact";
+            }
+        }
+    </script>
+
+</body>
+</html>
