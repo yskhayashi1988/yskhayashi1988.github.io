@@ -1,187 +1,538 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" data-lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Academic website of Yosuke Hayashi, MD — Cardiology, Electrophysiology, and medical writer.">
-  <meta name="theme-color" content="#0d120f">
-  <title>Yosuke Hayashi, MD </title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="theme.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yosuke Hayashi, MD — Cardiac Electrophysiology</title>
+<meta name="description" content="Yosuke Hayashi, MD — cardiologist and cardiac electrophysiologist in Tokyo. Catheter ablation, pulsed field ablation, cryoballoon ablation.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #131313;
+    --surface-2: #1b1b1b;
+    --line: #262626;
+    --text: #ededed;
+    --muted: #9a9a9a;
+    --accent: #e5484d;      /* アクセント色（変更する場合はここ） */
+    --accent-soft: rgba(229, 72, 77, 0.12);
+    --sans: "Instrument Sans", "Noto Sans JP", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --max: 1080px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+
+  /* 日英切替 */
+  html[data-lang="ja"] .en { display: none !important; }
+  html[data-lang="en"] .ja { display: none !important; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-weight: 700; text-decoration: none; letter-spacing: 0.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.85rem; color: var(--muted);
+    font-family: var(--mono); letter-spacing: 0.04em; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .lang-btn {
+    background: none; border: 1px solid var(--line); color: var(--text);
+    font-family: var(--mono); font-size: 0.75rem; padding: 4px 10px;
+    border-radius: 999px; cursor: pointer; transition: border-color .2s;
+  }
+  .lang-btn:hover { border-color: var(--accent); }
+  @media (max-width: 720px) { .nav-links li.hide-sm { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 96px 0 80px; border-bottom: 1px solid var(--line); }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } .hero { padding: 64px 0 56px; } }
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.05; font-weight: 600; letter-spacing: -0.02em; }
+  .hero h1 small { display: block; font-size: 0.38em; color: var(--muted); font-weight: 400; letter-spacing: 0; margin-top: 14px; }
+  .hero p.lead { margin-top: 28px; font-size: 1.08rem; color: #cfcfcf; max-width: 34em; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    padding: 11px 20px; border-radius: 999px; font-size: 0.9rem; font-weight: 500;
+    border: 1px solid var(--line); transition: all .2s;
+  }
+  .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:not(.primary):hover { border-color: var(--accent); }
+
+  /* イラスト枠 */
+  .hero-art {
+    aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: 20px;
+    background: radial-gradient(circle at 50% 45%, #1c1c1c 0%, var(--surface) 60%);
+    display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;
+  }
+  .hero-art img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-art .caption {
+    position: absolute; bottom: 14px; left: 16px; right: 16px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .ecg-path { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 3.2s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .ecg-path { animation: none; stroke-dashoffset: 0; } html { scroll-behavior: auto; } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 96px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 600px) { section { padding: 64px 0; } }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 48px; }
+  .sec-num { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; }
+  .sec-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); font-weight: 600; letter-spacing: -0.01em; }
+  .label {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-text p { color: #d4d4d4; margin-bottom: 1.1em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .chip {
+    font-size: 0.82rem; padding: 5px 12px; border-radius: 999px;
+    background: var(--surface-2); border: 1px solid var(--line);
+  }
+  .cert-list { list-style: none; }
+  .cert-list li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
+  .cert-list li:last-child { border-bottom: 1px solid var(--line); }
+  .cert-list .sub { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  /* Career timeline */
+  .timeline { list-style: none; position: relative; margin-top: 8px; }
+  .timeline li {
+    display: grid; grid-template-columns: 150px 1fr; gap: 24px;
+    padding: 18px 0; border-top: 1px solid var(--line);
+  }
+  .timeline li:last-child { border-bottom: 1px solid var(--line); }
+  .timeline .when { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); padding-top: 2px; }
+  .timeline .where { font-weight: 500; }
+  .timeline .what { color: var(--muted); font-size: 0.88rem; }
+  .timeline li.current .when { color: var(--accent); }
+  @media (max-width: 600px) { .timeline li { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* Publications */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .filter {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    font-family: var(--mono); font-size: 0.78rem; padding: 6px 14px;
+    border-radius: 999px; cursor: pointer; transition: all .2s;
+  }
+  .filter:hover { color: var(--text); }
+  .filter.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .filter-sep { width: 1px; background: var(--line); margin: 0 4px; }
+  .pub-count { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 28px; }
+  .pub-list { list-style: none; }
+  .pub {
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+    padding: 24px 0; border-top: 1px solid var(--line);
+  }
+  .pub:last-child { border-bottom: 1px solid var(--line); }
+  .pub-idx { font-family: var(--mono); color: var(--muted); font-size: 0.82rem; padding-top: 3px; }
+  .pub-type { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+  .pub h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.45; margin-bottom: 8px; }
+  .pub h3 a { text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s; }
+  .pub h3 a:hover { background-size: 100% 1px; }
+  .pub .authors { font-size: 0.86rem; color: var(--muted); }
+  .pub .authors strong { color: var(--text); font-weight: 600; }
+  .pub .journal { font-size: 0.86rem; margin-top: 4px; }
+  .pub .journal em { font-style: italic; font-weight: 500; }
+  .pub .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .pub .tags span { font-size: 0.72rem; padding: 2px 10px; border-radius: 999px; background: var(--accent-soft); color: #ff8a8d; }
+  @media (max-width: 600px) { .pub { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* Awards */
+  .awards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .award {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px;
+    transition: border-color .2s;
+  }
+  .award:hover { border-color: #3a3a3a; }
+  .award .kind { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 12px; }
+  .award h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.5; }
+  .award p { color: var(--muted); font-size: 0.86rem; margin-top: 6px; }
+
+  /* Contact */
+  .contact { text-align: center; border-bottom: none; }
+  .contact h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; margin: 8px 0 16px; }
+  .contact p { color: var(--muted); max-width: 32em; margin: 0 auto 32px; }
+  .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--text); }
+</style>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Yosuke hayashi home">Y<span>.</span>Hayashi</a>
-    <nav aria-label="Main navigation">
-      <button class="menu-button" aria-expanded="false" aria-controls="site-menu">Menu</button>
-      <ul id="site-menu">
-        <li><a href="#about" data-en="About" data-ja="自己紹介">About</a></li>
-        <li><a href="#publications" data-en="Publications" data-ja="論文">Publications</a></li>
-        <li><a href="#work" data-en="Work" data-ja="活動">Work</a></li>
-        <li><a href="#contact" data-en="Contact" data-ja="連絡先">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="language" type="button" aria-label="Switch language">JP</button>
-  </header>
+<body id="top">
 
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy reveal">
-        <p class="eyebrow" data-en="Cardiologist · Electrophysiologist" data-ja="医学博士号を目指して研鑽中">Graduate Student</p>
-        <h1 id="hero-title" data-en="Yosuke Hayashi <em>MD</em>" data-ja="林　洋介 <em>MD</em>">Yosuke Hayashi <em>MD</em></h1>
-        <p class="hero-intro" data-en="Aspiring physician-epidemiologist working to advance chronic disease prevention through rigorous causal inference, clinical insight, and research on health behaviors." data-ja="循環器診療を経験して、社会のヘルスリテラシーの改善を目指す">Aspiring physician-epidemiologist working to advance chronic disease prevention through rigorous causal inference, clinical insight, and research on health behaviors.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#publications" data-en="View publications" data-ja="論文を見る">View publications</a>
-          <a class="button text-link" href="#contact" data-en="Get in touch ↗" data-ja="お問い合わせ ↗">Get in touch ↗</a>
-        </div>
-        <div class="social-links">
-          <a class="social-button scholar" href="https://scholar.google.com/citations?user=ehtsriUAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Takashi Iida on Google Scholar">
-            <span aria-hidden="true">G</span> Google Scholar
-          </a>
-          <a class="social-button linkedin" href="https://www.linkedin.com/in/takashi-iida1113" target="_blank" rel="noopener noreferrer" aria-label="Takashi Iida on LinkedIn">
-            <span aria-hidden="true">in</span> LinkedIn
-          </a>
-        </div>
-      </div>
-      <div class="hero-visual portrait-card reveal">
-        <div class="portrait-meta"><span>PORTRAIT</span><span>TAKASHI IIDA</span></div>
-        <img class="portrait-image" src="images/takashi-iida.jpg" alt="Portrait of Takashi Iida" fetchpriority="high">
-        <div class="portrait-caption"><span data-en="PHYSICIAN · RESEARCHER" data-ja="医師 · 研究者">PHYSICIAN · RESEARCHER</span><span>BOSTON</span></div>
-      </div>
-      <p class="scroll-cue">SCROLL <span>↓</span></p>
-    </section>
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">Y.Hayashi<span>.</span></a>
+    <ul class="nav-links">
+      <li class="hide-sm"><a href="#about">About</a></li>
+      <li class="hide-sm"><a href="#career">Career</a></li>
+      <li class="hide-sm"><a href="#publications">Publications</a></li>
+      <li class="hide-sm"><a href="#contact">Contact</a></li>
+      <li><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button></li>
+    </ul>
+  </div>
+</header>
 
-    <section id="about" class="section about">
-      <div class="section-label reveal"><span>01</span><p data-en="About" data-ja="自己紹介">About</p></div>
-      <div class="about-copy reveal">
-        <h2 data-en="From health behaviors<br>to <em>better prevention.</em>" data-ja="健康行動から、<br><em>より良い予防へ。</em>">From health behaviors<br>to <em>better prevention.</em></h2>
-        <div class="about-prose">
-          <p data-en="I am a physician and epidemiologist-in-training interested in chronic disease prevention. My research focuses on how health behaviors—particularly physical activity—shape long-term physical and mental health, and how causal inference and other epidemiologic methods can help us study these relationships more rigorously." data-ja="私は慢性疾患予防に関心を持つ医師であり、疫学研究者を目指して研鑽しています。健康行動、特に身体活動が長期的な身体・精神の健康にどのような影響を与えるのか、また因果推論をはじめとする疫学的手法によって、その関係をより厳密に検証する方法を研究しています。">I am a physician and epidemiologist-in-training interested in chronic disease prevention. My research focuses on how health behaviors—particularly physical activity—shape long-term physical and mental health, and how causal inference and other epidemiologic methods can help us study these relationships more rigorously.</p>
-          <p data-en="I work with wearable, survey, and real-world health data to study health behaviors and disease over time. By combining rigorous epidemiologic methods with clinical insight, I aim to generate evidence that can inform practical and equitable approaches to prevention." data-ja="ウェアラブルデータ、調査データ、リアルワールドの健康データを用いて、健康行動と疾患の経時的な変化を研究しています。厳密な疫学的手法と臨床的洞察を組み合わせ、実践的かつ公平な予防アプローチに役立つエビデンスを生み出すことを目指しています。">I work with wearable, survey, and real-world health data to study health behaviors and disease over time. By combining rigorous epidemiologic methods with clinical insight, I aim to generate evidence that can inform practical and equitable approaches to prevention.</p>
-        </div>
-        <div class="about-research">
-          <div>
-            <p class="eyebrow" data-en="RESEARCH TOPICS" data-ja="研究テーマ">RESEARCH TOPICS</p>
-            <ul><li data-en="Physical Activity" data-ja="身体活動">Physical Activity</li><li data-en="Healthy Aging" data-ja="ヘルシーエイジング">Healthy Aging</li><li data-en="Mental Health" data-ja="メンタルヘルス">Mental Health</li><li data-en="Social Epidemiology" data-ja="社会疫学">Social Epidemiology</li></ul>
-          </div>
-          <div>
-            <p class="eyebrow" data-en="METHODS &amp; DATA" data-ja="方法・データ">METHODS &amp; DATA</p>
-            <ul><li data-en="Causal Inference" data-ja="因果推論">Causal Inference</li><li data-en="Wearable Data" data-ja="ウェアラブルデータ">Wearable Data</li><li data-en="Longitudinal Data Analysis" data-ja="縦断データ解析">Longitudinal Data Analysis</li></ul>
-          </div>
-        </div>
-        <div class="career-heading">
-          <p class="eyebrow" data-en="EDUCATION" data-ja="学歴">EDUCATION</p>
-          <h3 data-en="Academic training" data-ja="学歴・研修">Academic training</h3>
-        </div>
-        <div class="career-table">
-          <article>
-            <p class="career-date">2025 — PRESENT</p>
-            <div><h4 data-en="MPH Candidate, Epidemiology &amp; Biostatistics" data-ja="MPH課程（疫学・生物統計学）">MPH Candidate, Epidemiology &amp; Biostatistics</h4><p data-en="Boston University School of Public Health" data-ja="ボストン大学公衆衛生大学院">Boston University School of Public Health</p></div>
-          </article>
-          <article>
-            <p class="career-date">2019 — 2025</p>
-            <div><h4 data-en="Doctor of Medicine (MD)" data-ja="医学士（MD）">Doctor of Medicine (MD)</h4><p data-en="Niigata University School of Medicine" data-ja="新潟大学医学部医学科">Niigata University School of Medicine</p></div>
-          </article>
-        </div>
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Cardiologist · Electrophysiologist</p>
+      <h1>
+        Yosuke Hayashi, MD
+        <!-- 漢字表記を入れる場合は下の行の「林 〇〇」を書き換えてください -->
+        <small class="ja">林 〇〇 ｜ 循環器内科・不整脈専門医</small>
+        <small class="en">Cardiac Electrophysiology · Tokyo</small>
+      </h1>
+      <p class="lead ja">心房細動を中心としたカテーテルアブレーションに従事しています。パルスフィールドアブレーション（PFA）やクライオバルーンなど新しいデバイスの安全性と有効性を、日々の臨床とデータの両面から検証しています。</p>
+      <p class="lead en">I perform catheter ablation for atrial fibrillation and other arrhythmias, and study the safety and efficacy of emerging technologies — pulsed field ablation and novel cryoballoon systems — through clinical practice and real-world data.</p>
+      <div class="hero-cta">
+        <a href="#publications" class="btn primary"><span class="ja">業績を見る</span><span class="en">View publications</span> →</a>
+        <a href="#contact" class="btn"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span> ↗</a>
       </div>
-    </section>
+    </div>
 
-    <section id="publications" class="section work publications">
-      <div class="section-label reveal"><span>02</span><p data-en="Publications" data-ja="論文">Publications</p></div>
-      <div class="work-intro reveal">
-        <h2 data-en="One list.<br><em>Many connections.</em>" data-ja="一つの論文リスト。<br><em>複数のつながり。</em>">One list.<br><em>Many connections.</em></h2>
-        <p data-en="Research at the intersection of movement, health, and epidemiology—organized by topic and method." data-ja="身体活動、健康、疫学が交わる研究を、テーマと研究手法ごとに整理しています。">Research at the intersection of movement, health, and epidemiology—organized by topic and method.</p>
-      </div>
-      <div class="publication-toolbar reveal" role="tablist" aria-label="Filter publications by tag">
-        <button class="active" type="button" role="tab" aria-selected="true" data-publication-filter="all" data-en="All" data-ja="すべて">All</button>
-        <button type="button" role="tab" aria-selected="false" data-publication-filter="physical-activity" data-en="Physical Activity" data-ja="身体活動">Physical Activity</button>
-        <button type="button" role="tab" aria-selected="false" data-publication-filter="healthy-aging" data-en="Healthy Aging" data-ja="ヘルシーエイジング">Healthy Aging</button>
-        <button type="button" role="tab" aria-selected="false" data-publication-filter="mental-health" data-en="Mental Health" data-ja="メンタルヘルス">Mental Health</button>
-        <button type="button" role="tab" aria-selected="false" data-publication-filter="causal-inference" data-en="Causal Inference" data-ja="因果推論">Causal Inference</button>
-        <button type="button" role="tab" aria-selected="false" data-publication-filter="wearable-data" data-en="Wearable Data" data-ja="ウェアラブルデータ">Wearable Data</button>
-      </div>
-      <div class="publication-list">
-        <article class="publication-item reveal" data-publication-tags="physical-activity healthy-aging">
-          <p class="publication-number">01</p>
-          <div>
-            <p class="publication-status" data-en="ORIGINAL ARTICLE · CO-FIRST AUTHOR" data-ja="原著論文・共同筆頭著者">ORIGINAL ARTICLE · CO-FIRST AUTHOR</p>
-            <h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9438326/" target="_blank" rel="noopener noreferrer">Physical activity and recurrent fall risk in community-dwelling Japanese people aged 40–74 years: the Murakami cohort study</a></h3>
-            <p class="publication-authors">Kamimura S<sup>†</sup>, <strong>Iida T<sup>†</sup></strong>, Watanabe Y, Kitamura K, Kabasawa K, Takahashi A, Saito T, Kobayashi R, Oshiki R, Takachi R, Tsugane S, Iki M, Sasaki A, Yamazaki O, Watanabe K, Nakamura K</p>
-            <p class="publication-citation"><strong>Eur Rev Aging Phys Act</strong> · 2022 · 19:20</p>
-            <p class="publication-summary" data-en="In a five-year cohort of 7,561 community-dwelling Japanese adults aged 40–74, moderate leisure-time physical activity was associated with a lower risk of recurrent falls, whereas higher non-leisure-time activity was associated with greater risk." data-ja="40～74歳の地域在住日本人7,561人を5年間追跡した結果、中程度の余暇身体活動は反復転倒リスクの低下と関連し、一方で高い非余暇身体活動はリスク上昇と関連しました。">In a five-year cohort of 7,561 community-dwelling Japanese adults aged 40–74, moderate leisure-time physical activity was associated with a lower risk of recurrent falls, whereas higher non-leisure-time activity was associated with greater risk.</p>
-            <p class="cofirst-note"><sup>†</sup> <span data-en="Co-first authors" data-ja="共同筆頭著者">Co-first authors</span></p>
-            <ul class="publication-tags"><li data-en="Physical Activity" data-ja="身体活動">Physical Activity</li><li data-en="Healthy Aging" data-ja="ヘルシーエイジング">Healthy Aging</li><li data-en="Cohort Study" data-ja="コホート研究">Cohort Study</li></ul>
-          </div>
-        </article>
-      </div>
-      <p class="publication-empty" hidden data-en="No publications with this tag yet." data-ja="このタグの論文はまだありません。">No publications with this tag yet.</p>
-    </section>
+    <!-- イラスト：自分の画像に差し替える場合は、下の <svg>…</svg> を
+         <img src="images/illustration.png" alt="Illustration"> に置き換えてください -->
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" width="85%" aria-hidden="true">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e5484d" stop-opacity="0.9"/>
+            <stop offset="1" stop-color="#e5484d" stop-opacity="0.25"/>
+          </linearGradient>
+        </defs>
+        <!-- 同心円（マッピングのイメージ） -->
+        <g fill="none" stroke="#2a2a2a" stroke-width="1">
+          <circle cx="200" cy="190" r="60"/><circle cx="200" cy="190" r="100"/>
+          <circle cx="200" cy="190" r="140"/><circle cx="200" cy="190" r="180"/>
+        </g>
+        <!-- ハート -->
+        <path d="M200 285 C120 230 95 185 110 150 C125 115 170 110 200 145 C230 110 275 115 290 150 C305 185 280 230 200 285 Z"
+              fill="url(#hg)" opacity="0.18"/>
+        <path d="M200 285 C120 230 95 185 110 150 C125 115 170 110 200 145 C230 110 275 115 290 150 C305 185 280 230 200 285 Z"
+              fill="none" stroke="#e5484d" stroke-width="1.5" opacity="0.7"/>
+        <!-- 心電図波形 -->
+        <path class="ecg-path" d="M20 200 H120 L132 200 L140 188 L148 200 L160 200 L170 120 L182 255 L194 200 L215 200 Q228 172 241 200 L380 200"
+              fill="none" stroke="#ededed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="200" cy="190" r="3" fill="#e5484d"/>
+      </svg>
+      <div class="caption"><span>CATHETER ABLATION</span><span>TOKYO</span></div>
+    </div>
+  </div>
+</div>
 
-    <section id="work" class="section selected-work">
-      <div class="section-label reveal"><span>03</span><p data-en="Work" data-ja="活動">Work</p></div>
-      <div class="work-heading reveal">
-        <h2 data-en="Beyond<br><em>publications.</em>" data-ja="論文を越えた、<br><em>活動。</em>">Beyond<br><em>publications.</em></h2>
-        <p data-en="Notes, presentations, awards, and fellowships that reflect ongoing academic work and training." data-ja="学術活動と研修の歩みを示す、ノート、発表、受賞、フェローシップを掲載します。">Notes, presentations, awards, and fellowships that reflect ongoing academic work and training.</p>
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="ja">2012年に東京医科歯科大学（現・東京科学大学）を卒業後、複数の基幹病院で循環器内科医として研鑽を積み、榊原記念病院を経て、現在は東京山手メディカルセンター循環器内科に勤務しています。</p>
+        <p class="ja">専門は不整脈のカテーテル治療です。新しいアブレーションデバイスの初期臨床経験、ラーニングカーブ、合併症の評価などをテーマに、多施設共同研究や症例報告として発信しています。</p>
+        <p class="en">After graduating from Tokyo Medical and Dental University (now Institute of Science Tokyo) in 2012, I trained in cardiology at several major teaching hospitals, including the Sakakibara Heart Institute. I currently practice at Tokyo Yamate Medical Center.</p>
+        <p class="en">My clinical and research focus is catheter ablation — particularly early clinical experience with novel devices, operator learning curves, and procedural safety — reported through multicenter studies and case reports.</p>
       </div>
-      <div class="work-tabs reveal" role="tablist" aria-label="Work categories">
-        <button class="active" type="button" role="tab" aria-selected="true" data-work-filter="all" data-en="All" data-ja="すべて">All</button>
-        <button type="button" role="tab" aria-selected="false" data-work-filter="note" data-en="Notes" data-ja="ノート">Notes</button>
-        <button type="button" role="tab" aria-selected="false" data-work-filter="presentation" data-en="Presentations" data-ja="発表">Presentations</button>
-        <button type="button" role="tab" aria-selected="false" data-work-filter="award" data-en="Awards &amp; Fellowships" data-ja="受賞・フェローシップ">Awards &amp; Fellowships</button>
+      <div>
+        <p class="label"><span class="ja">専門領域</span><span class="en">Focus areas</span></p>
+        <div class="chips">
+          <span class="chip"><span class="ja">心房細動アブレーション</span><span class="en">AF Ablation</span></span>
+          <span class="chip"><span class="ja">パルスフィールドアブレーション</span><span class="en">Pulsed Field Ablation</span></span>
+          <span class="chip"><span class="ja">クライオバルーン</span><span class="en">Cryoballoon</span></span>
+          <span class="chip"><span class="ja">3Dマッピング</span><span class="en">3D Mapping</span></span>
+          <span class="chip"><span class="ja">手技の安全性</span><span class="en">Procedural Safety</span></span>
+        </div>
+        <p class="label"><span class="ja">資格</span><span class="en">Board certifications</span></p>
+        <ul class="cert-list">
+          <li><span class="ja">循環器専門医</span><span class="en">Board Certified Cardiologist</span><span class="sub"><span class="ja">日本循環器学会</span><span class="en">Japanese Circulation Society</span></span></li>
+          <li><span class="ja">不整脈専門医</span><span class="en">Board Certified Arrhythmia Specialist</span><span class="sub"><span class="ja">日本不整脈心電学会</span><span class="en">Japanese Heart Rhythm Society</span></span></li>
+          <li><span class="ja">内科認定医</span><span class="en">Certified Internist</span><span class="sub"><span class="ja">日本内科学会</span><span class="en">Japanese Society of Internal Medicine</span></span></li>
+        </ul>
       </div>
-      <div class="work-list">
-        <article class="work-entry reveal" data-work-type="note">
-          <div class="work-meta"><span data-en="TECHNICAL NOTE" data-ja="テクニカルノート">TECHNICAL NOTE</span><time>2026</time></div>
-          <h3 data-en="A Practical Guide to Using All of Us Fitbit Data" data-ja="All of Us Fitbitデータ活用の実践ガイド">A Practical Guide to Using All of Us Fitbit Data</h3>
-          <p data-en="A practical guide to accessing, preparing, and analyzing Fitbit data in the All of Us Researcher Workbench." data-ja="All of Us Researcher WorkbenchでFitbitデータにアクセスし、前処理・解析するための実践ガイドです。">A practical guide to accessing, preparing, and analyzing Fitbit data in the All of Us Researcher Workbench.</p>
-          <ul class="work-tags" aria-label="Topics"><li>All of Us</li><li>Fitbit</li><li data-en="Wearable Data" data-ja="ウェアラブルデータ">Wearable Data</li></ul>
-          <a href="https://takashi-iida-epi.github.io/all-of-us-research-guide/" target="_blank" rel="noopener noreferrer" data-en="Read the guide ↗" data-ja="ガイドを読む ↗">Read the guide ↗</a>
-        </article>
-        <article class="work-entry reveal" data-work-type="presentation">
-          <div class="work-meta"><span data-en="INVITED TALK" data-ja="招待講演">INVITED TALK</span><time>JULY 4, 2026</time></div>
-          <h3 data-en="Building a Global Career from Medical School" data-ja="医学部から拓くグローバルキャリア">Building a Global Career from Medical School</h3>
-          <p>ZEROGATE · Online</p>
-          <a href="https://zerogate0.com/event/vol26" target="_blank" rel="noopener noreferrer" data-en="Event page ↗" data-ja="イベントページ ↗">Event page ↗</a>
-        </article>
-        <article class="work-entry reveal" data-work-type="award">
-          <div class="work-meta"><span data-en="FELLOWSHIP" data-ja="フェローシップ">FELLOWSHIP</span><time>2025 — PRESENT</time></div>
-          <h3 data-en="Epidemiology Excellence (E2) Fellowship" data-ja="Epidemiology Excellence（E2）フェローシップ">Epidemiology Excellence (E2) Fellowship</h3>
-          <p data-en="Boston University School of Public Health" data-ja="ボストン大学公衆衛生大学院">Boston University School of Public Health</p>
-          <a href="https://epidemiologyexcellence.squarespace.com" target="_blank" rel="noopener noreferrer" data-en="Program website ↗" data-ja="プログラムサイト ↗">Program website ↗</a>
-        </article>
-        <article class="work-entry reveal" data-work-type="award">
-          <div class="work-meta"><span data-en="AWARD" data-ja="受賞">AWARD</span><time>2023</time></div>
-          <h3 data-en="Yujin Medical Student Research Award" data-ja="有壬記念医学生研究奨励賞">Yujin Medical Student Research Award</h3>
-          <p data-en="Niigata University School of Medicine" data-ja="新潟大学医学部医学科">Niigata University School of Medicine</p>
-          <a href="https://www.med.niigata-u.ac.jp/yujin/medical-student-award/winners/" target="_blank" rel="noopener noreferrer" data-en="Award recipients ↗" data-ja="受賞者一覧 ↗">Award recipients ↗</a>
-        </article>
-        <article class="work-entry reveal" data-work-type="award">
-          <div class="work-meta"><span data-en="SCHOLARSHIP" data-ja="奨学金">SCHOLARSHIP</span><time>2019 — 2022</time></div>
-          <h3 data-en="Academic Excellence Scholarship" data-ja="学業成績優秀者奨学金">Academic Excellence Scholarship</h3>
-          <p data-en="Niigata University" data-ja="新潟大学">Niigata University</p>
-          <p class="work-detail" data-en="Awarded annually for four consecutive years" data-ja="4年間連続で毎年度受給">Awarded annually for four consecutive years</p>
-          <a href="https://www.niigata-u.ac.jp/campus/economic/scholarship/excellence/" target="_blank" rel="noopener noreferrer" data-en="Scholarship program ↗" data-ja="奨学金制度 ↗">Scholarship program ↗</a>
-        </article>
-      </div>
-      <p class="work-empty" hidden data-en="No entries in this category yet." data-ja="このカテゴリーの項目はまだありません。">No entries in this category yet.</p>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="contact" class="section contact">
-      <p class="eyebrow reveal" data-en="COLLABORATION · QUESTIONS · IDEAS" data-ja="共同研究 · ご質問 · アイデア">COLLABORATION · QUESTIONS · IDEAS</p>
-      <h2 class="reveal" data-en="CONTACT" data-ja="CONTACT">CONTACT</h2>
-      <p class="contact-note reveal" data-en="For research collaborations or academic inquiries, please get in touch." data-ja="共同研究や学術的なお問い合わせについて、お気軽にご連絡ください。">For research collaborations or academic inquiries, please get in touch.</p>
-      <a class="contact-link reveal" href="mailto:takiid@bu.edu">takiid@bu.edu <span>↗</span></a>
-    </section>
-  </main>
+<!-- ================= CAREER ================= -->
+<section id="career">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2><span class="ja">経歴</span><span class="en">Career</span></h2></div>
+    <ul class="timeline">
+      <li class="current">
+        <div class="when">2026.04 — <span class="ja">現在</span><span class="en">Present</span></div>
+        <div><div class="where"><span class="ja">東京山手メディカルセンター</span><span class="en">Tokyo Yamate Medical Center</span></div>
+        <div class="what"><span class="ja">循環器内科</span><span class="en">Department of Cardiology</span></div></div>
+      </li>
+      <li>
+        <div class="when">2022.04 — 2026.03</div>
+        <div><div class="where"><span class="ja">榊原記念病院</span><span class="en">Sakakibara Heart Institute</span></div>
+        <div class="what"><span class="ja">循環器内科</span><span class="en">Department of Cardiology</span></div></div>
+      </li>
+      <li>
+        <div class="when">2020.04 — 2022.03</div>
+        <div><div class="where"><span class="ja">草加市立病院</span><span class="en">Soka Municipal Hospital</span></div>
+        <div class="what"><span class="ja">循環器内科</span><span class="en">Department of Cardiology</span></div></div>
+      </li>
+      <li>
+        <div class="when">2016.10 — 2020.03</div>
+        <div><div class="where"><span class="ja">横須賀共済病院</span><span class="en">Yokosuka Kyosai Hospital</span></div>
+        <div class="what"><span class="ja">循環器内科</span><span class="en">Department of Cardiology</span></div></div>
+      </li>
+      <li>
+        <div class="when">2014.04 — 2016.09</div>
+        <div><div class="where"><span class="ja">さいたま赤十字病院</span><span class="en">Japanese Red Cross Saitama Hospital</span></div>
+        <div class="what"><span class="ja">循環器内科</span><span class="en">Department of Cardiology</span></div></div>
+      </li>
+      <li>
+        <div class="when">2012.04 — 2014.03</div>
+        <div><div class="where"><span class="ja">東京医科歯科大学医学部附属病院（現 東京科学大学病院）</span><span class="en">Tokyo Medical and Dental University Hospital (now Institute of Science Tokyo Hospital)</span></div>
+        <div class="what"><span class="ja">初期研修医</span><span class="en">Junior Resident</span></div></div>
+      </li>
+      <li>
+        <div class="when">2012.03</div>
+        <div><div class="where"><span class="ja">東京医科歯科大学 医学部 卒業（現 東京科学大学）</span><span class="en">MD, Tokyo Medical and Dental University (now Institute of Science Tokyo)</span></div></div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <footer>
-    <a class="brand" href="#top">T<span>.</span>Iida</a>
-    <p>© <span id="year"></span> <span data-en="Takashi Iida" data-ja="飯田　聖">Takashi Iida</span></p>
-    <a href="#top" data-en="Back to top ↑" data-ja="ページ上部へ ↑">Back to top ↑</a>
-  </footer>
-  <script src="script.js"></script>
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2><span class="ja">業績</span><span class="en">Publications</span></h2></div>
+    <div class="filters" id="filters"></div>
+    <p class="pub-count" id="pubCount"></p>
+    <ol class="pub-list" id="pubList"></ol>
+  </div>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2><span class="ja">受賞歴</span><span class="en">Awards</span></h2></div>
+    <div class="awards">
+      <div class="award">
+        <div class="kind">AWARD</div>
+        <h3><span class="ja">最優秀賞</span><span class="en">Best Award</span></h3>
+        <p><span class="ja">第46回 埼玉不整脈ペーシング研究会</span><span class="en">The 46th Saitama Arrhythmia and Pacing Study Meeting</span></p>
+      </div>
+      <div class="award">
+        <div class="kind">AWARD</div>
+        <h3><span class="ja">最優秀演題賞</span><span class="en">Best Presentation Award</span></h3>
+        <p><span class="ja">第17回 平岡不整脈研究会</span><span class="en">The 17th Hiraoka Arrhythmia Study Meeting</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="label">Collaboration · Questions</p>
+    <h2>Contact</h2>
+    <p><span class="ja">共同研究や学術的なお問い合わせは、以下よりご連絡ください。</span><span class="en">For research collaborations or academic inquiries, please get in touch.</span></p>
+    <!-- メールアドレスを書き換えてください -->
+    <a class="btn primary" href="mailto:your-email@example.com">your-email@example.com ↗</a>
+    <!-- 各リンクの href="#" を自分のページURLに書き換えてください（不要なものは削除） -->
+    <div class="links">
+      <a class="btn" href="#" target="_blank" rel="noopener">researchmap ↗</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">ORCID ↗</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">Google Scholar ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Yosuke Hayashi</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   論文データ：追加・修正はここだけ編集すればOK
+   type: "original" | "case" | "coauthor"
+   tags: 下の TAGS にあるものを指定
+   url : DOIがあれば https://doi.org/xxxx が確実
+   ========================================================= */
+const ME = "Hayashi Y";
+const pubmed = t => "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(t);
+
+const PUBS = [
+  { type: "original", year: 2025,
+    authors: "Hayashi Y, Miyazaki S, Asano S, et al.",
+    title: "Acute kidney injury and haptoglobin depletion after pulsed field ablation: Impact of device type under routine hydration protocol",
+    journal: "Heart Rhythm", cite: "2025 Dec 8 (online ahead of print)",
+    tags: ["PFA", "Safety"] },
+  { type: "original", year: 2025,
+    authors: "Hayashi Y, Miyazaki S, Nitta J, et al.",
+    title: "One-Year Clinical Outcomes of Novel Dual-Sized Cryoballoon Ablation for Atrial Fibrillation",
+    journal: "J Cardiovasc Electrophysiol", cite: "2025;36(11):2878-2884",
+    tags: ["Cryoballoon"] },
+  { type: "original", year: 2025,
+    authors: "Hayashi Y, Miyazaki S, Nitta J, et al.",
+    title: "Novel Size Adjustable Cryoballoon Ablation Catheter for Atrial Fibrillation: Multicenter Experience of Over 500 Cases",
+    journal: "JACC Clin Electrophysiol", cite: "2025;11(2):414-417",
+    tags: ["Cryoballoon"] },
+  { type: "original", year: 2025,
+    authors: "Hayashi Y, Miyazaki S, Nitta J, et al.",
+    title: "Impact of the Individual Operator Experience and Learning Curve of a Novel Size Adjustable Cryoballoon",
+    journal: "J Cardiovasc Electrophysiol", cite: "2025;36(2):422-429",
+    tags: ["Cryoballoon"] },
+
+  { type: "case", year: 2026,
+    authors: "Hayashi Y, Asano S, Sekiguchi Y, Takamisawa I, Nanasato M, Nitta J.",
+    title: "A case report of pulsed field ablation directly through a large self-expanding atrial septal occluder device with a hubless left atrial disc",
+    journal: "HeartRhythm Case Rep", cite: "2026;21:520-522",
+    tags: ["PFA"] },
+  { type: "case", year: 2025,
+    authors: "Hayashi Y, Sekiguchi Y, Asano S, Fukunaga H, Nitta J.",
+    title: "Occluded pulmonary vein following a novel compliant cryoballoon ablation despite proximal seal technique",
+    journal: "HeartRhythm Case Rep", cite: "2025;11:891-896",
+    tags: ["Cryoballoon", "Safety"] },
+
+  { type: "coauthor", year: 2026,
+    authors: "Inaba O, Miyazaki S, Nitta J, Takahashi A, Yamashita S, Nagata Y, Iwai S, Takahashi Y, Yamauchi Y, Mizukami A, Hachiya H, Suzuki A, Hayashi Y, Negishi M, Sasano T.",
+    title: "Comparative Analysis of Safety Profiles of Pulsed Field and Thermal Energy Atrial Fibrillation Ablation: Insight From the Multicenter Real-World Ablation Registry",
+    journal: "J Cardiovasc Electrophysiol", cite: "2026 Aug 5 (online)",
+    url: "https://doi.org/10.1111/jce.70474",
+    tags: ["PFA", "Safety"] },
+  { type: "coauthor", year: 2026,
+    authors: "Tachibana S, Miyazaki S, Nitta J, Yamashita S, Yamauchi Y, Ono Y, Nagata Y, Hachiya H, Inaba O, Iwai S, Takahashi Y, Hayashi Y, Arai H, Horie T, Miwa N, Sasano T.",
+    title: "Phrenic Nerve Injury After Catheter Ablation for Atrial Fibrillation",
+    journal: "Pacing Clin Electrophysiol", cite: "2026 Jul 16 (online)",
+    url: "https://doi.org/10.1111/pace.70360",
+    tags: ["Safety"] },
+  { type: "coauthor", year: 2025,
+    authors: "Shigeta T, Miyazaki S, Isonaga Y, Arai H, Miwa N, Hayashi Y, Kakehashi S, Inaba O, Hachiya H, Yamauchi Y, Nitta J, Tada H, Goya M, Sasano T.",
+    title: "Phrenic nerve injury after atrial fibrillation ablation: different recovery courses among cryoballoon, laser balloon, and radiofrequency ablation",
+    journal: "Clin Res Cardiol", cite: "2025;114:72-82",
+    tags: ["Cryoballoon", "Safety"] },
+  { type: "coauthor", year: 2023,
+    authors: "Fukunaga H, Sekiguchi Y, Sawaguchi J, Hayashi Y, Asano S, Mabuchi K, Inoue K, Tanizaki K, Umemura J, Isobe M, Nitta J.",
+    title: "Initial clinical experience with the novel POLARx FIT cryoballoon system for pulmonary vein isolation in patients with atrial fibrillation",
+    journal: "Int J Cardiol Heart Vasc", cite: "2023;50:101326",
+    tags: ["Cryoballoon"] },
+  { type: "coauthor", year: 2023,
+    authors: "Nagase T, Kato R, Asano S, Fukunaga H, Yoshida Y, Hayashi Y, Sekiguchi Y, Nanasato M, Nitta J, Isobe M.",
+    title: "Spatial relationship of localized sources of persistent atrial fibrillation identified by a unipolar-based automated algorithm to complex fractionated atrial electrocardiograms and atrial low voltage areas",
+    journal: "J Cardiovasc Electrophysiol", cite: "2023;34:337-344",
+    tags: ["Mapping"] },
+  { type: "coauthor", year: 2017,
+    authors: "Suzuki M, Nitta J, Hayashi Y, Lee K, Watanabe K, Hirao T, Kato N, Inamura Y, Sato A, Goya M, Hirao K, Isobe M.",
+    title: "The Efficacy of Isochronal 3D Mapping-Based Ablation of Ventricular Arrhythmia",
+    journal: "Int Heart J", cite: "2017;58:495-499",
+    tags: ["Mapping"] },
+];
+
+const TYPES = {
+  original: { ja: "原著（筆頭）", en: "Original · First author" },
+  case:     { ja: "症例報告（筆頭）", en: "Case report · First author" },
+  coauthor: { ja: "共著", en: "Co-author" },
+};
+const TAGS = ["PFA", "Cryoballoon", "Safety", "Mapping"];
+
+/* ---------- 描画 ---------- */
+let current = "all";
+const listEl = document.getElementById("pubList");
+const filtersEl = document.getElementById("filters");
+const countEl = document.getElementById("pubCount");
+
+function esc(s) { return s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function buildFilters() {
+  const items = [["all", "すべて", "All"]];
+  Object.entries(TYPES).forEach(([k, v]) => items.push([k, v.ja, v.en]));
+  items.push(["|"]);
+  TAGS.forEach(t => items.push(["tag:" + t, t, t]));
+  filtersEl.innerHTML = items.map(([k, ja, en]) =>
+    k === "|" ? '<span class="filter-sep"></span>'
+    : `<button class="filter${k === current ? " active" : ""}" data-key="${k}" type="button"><span class="ja">${ja}</span><span class="en">${en}</span></button>`
+  ).join("");
+}
+
+function render() {
+  const shown = PUBS.filter(p =>
+    current === "all" ? true :
+    current.startsWith("tag:") ? p.tags.includes(current.slice(4)) :
+    p.type === current);
+  listEl.innerHTML = shown.map((p, i) => {
+    const url = p.url || pubmed(p.title);
+    const authors = esc(p.authors).replace(ME, `<strong>${ME}</strong>`);
+    return `<li class="pub">
+      <div class="pub-idx">${String(i + 1).padStart(2, "0")}</div>
+      <div>
+        <div class="pub-type"><span class="ja">${TYPES[p.type].ja}</span><span class="en">${TYPES[p.type].en}</span> · ${p.year}</div>
+        <h3><a href="${url}" target="_blank" rel="noopener">${esc(p.title)}</a></h3>
+        <div class="authors">${authors}</div>
+        <div class="journal"><em>${esc(p.journal)}</em>. ${esc(p.cite)}</div>
+        <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join("")}</div>
+      </div>
+    </li>`;
+  }).join("");
+  countEl.innerHTML = `<span class="ja">${shown.length} 件</span><span class="en">${shown.length} item${shown.length === 1 ? "" : "s"}</span>`;
+}
+
+filtersEl.addEventListener("click", e => {
+  const b = e.target.closest(".filter");
+  if (!b) return;
+  current = b.dataset.key;
+  buildFilters(); render();
+});
+
+/* ---------- 日英切替 ---------- */
+const langBtn = document.getElementById("langBtn");
+function setLang(l) {
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l;
+  langBtn.textContent = l === "ja" ? "EN" : "JP";
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+langBtn.addEventListener("click", () =>
+  setLang(document.documentElement.dataset.lang === "ja" ? "en" : "ja"));
+let saved = null;
+try { saved = localStorage.getItem("lang"); } catch (e) {}
+setLang(saved === "en" ? "en" : "ja");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+buildFilters(); render();
+</script>
 </body>
 </html>
