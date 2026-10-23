@@ -323,16 +323,6 @@ html {
   color:#527b91;
 }
 
-.research-card-full-link {
-  display:block;
-  color:inherit;
-  text-decoration:none;
-}
-
-.research-card-full-linke:hover {
-  color:#527b91;
-}
-
 #education {
   background-color:#f5f3ee;
   padding:60px 40px;
@@ -423,4 +413,16 @@ html {
 .research-card a{
   text-decoration:none
 }
+
+
+.research-card-full-link {
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.research-card-full-linke:hover {
+  color:#527b91;
+}
+
 
