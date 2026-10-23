@@ -360,6 +360,22 @@ html {
   }
 }
 
+#education > a {
+  display:inline-block;
+  margin-top:24px;
+  color:#243746;
+  text-decoration:none;
+  font-size:14px;
+  border-bottom:1px solid #243746;
+  padding-bottom:4px;
+  transition:color 0.3s ease;
+}
+
+#education > a:hover{
+  color:#527b91;
+}
+
+
 #writing {
   background-color:#f5f3ee;
   padding:60px 40px;
@@ -388,6 +404,19 @@ html {
   }
 }
 
+#writing > a {
+  display:inline-block;
+  margin-top:24px;
+  color:#243746;
+  text-decoration:none;
+  font-size:14px;
+  border-bottom:1px solid #243746;
+  padding-bottom:4px;
+  transition:color 0.3s ease;
+}
 
+#writing > a:hover{
+  color:#527b91;
+}
 
 
