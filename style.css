@@ -45,4 +45,25 @@ nav {
   font-size:14px;
 }
 
+.hero {
+  background-color:#172b3a;
+  color:#ffffff;
+  padding:80px 40px;
+}
+
+.hero h1 {
+  font-size:48px;
+  margin-bottom:16px;
+}
+
+.hero h2 {
+  font-size:24px;
+  font-weight:400;
+}
+
+.eyebrow {
+  color:#a9c7d6;
+  font-size:13px;
+  letter-spacing:2px;
+}
 
