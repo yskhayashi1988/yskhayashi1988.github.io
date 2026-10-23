@@ -78,3 +78,85 @@ nav {
   }
 }
 
+#profile {
+  padding:60px 40px;
+  max-width:900px;
+  margin:0 auto;
+}
+
+#profile h2 {
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:24px;
+}
+
+#profile p {
+  font-size:16px;
+  line-height:1.9;
+}
+
+@media (max-width:600px) {
+  #profile {
+    padding:48px 24px;
+  }
+
+  #profile h2 {
+    font-size:24px;
+  }
+}
+
+#research {
+  background-color:#ffffff;
+  padding:60px 40px;
+}
+
+#research h2 {
+  max-width:900px;
+  margin: 9 auto 24px;
+  font-size:28px;
+  font-weight:700;
+}
+
+#research p {
+  max-width:900px;
+  margin: 0 auto;
+  font-size:16px;
+  line-height:1.9;
+}
+
+@media (max-width:600px) {
+  #research {
+    padding:48px 24px;
+  }
+
+  #research h2 {
+    font-size:24px;
+  }
+}
+
+#contact {
+  background-color:#e9eef1;
+  padding:60px 40px;
+  text-align:center;
+}
+
+#contact h2 {
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:24px;
+}
+
+#contact p {
+  font-size:16px;
+  line-height:1.9;
+}
+
+@media (max-width:600px) {
+  #contact {
+    padding:48px 24px;
+  }
+
+  #contact h2 {
+    font-size:24px;
+  }
+}
