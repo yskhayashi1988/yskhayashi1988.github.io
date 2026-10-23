@@ -228,7 +228,7 @@ nav {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.reaserch-card:hover {
+.research-card:hover {
   transform:translateY(-4px);
   box-shadow:0 8px 20px rgba(36, 55, 70, 0.12);
 }
