@@ -385,6 +385,11 @@ html {
   color:#527b91;
 }
 
+#education p,
+#education ul {
+  max-width:760px;
+}
+
 
 #writing {
   background-color:#f5f3ee;
