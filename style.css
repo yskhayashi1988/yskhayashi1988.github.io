@@ -322,6 +322,8 @@ html {
   color:#527b91;
 }
 
-.research-card-link {
+.research-card-full-link {
   display:block;
+  color:inherit;
+  text-decoration:none;
 }
