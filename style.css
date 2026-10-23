@@ -48,7 +48,8 @@ nav {
 .hero {
   background-color:#172b3a;
   color:#ffffff;
-  padding:80px 40px;
+  padding:100px 60px;
+  margin:0;
 }
 
 .hero h1 {
@@ -65,5 +66,15 @@ nav {
   color:#a9c7d6;
   font-size:13px;
   letter-spacing:2px;
+}
+
+@media (max-width:600px) {
+  .hero {
+    padding:60px 24px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
 }
 
