@@ -327,7 +327,67 @@ html {
   color:inherit;
   text-decoration:none;
 }
+
 .research-card-full-linke:hover {
   color:#527b91;
 }
+
+#education {
+  background-color:#f5f3ee;
+  padding:60px 40px;
+  max-width:900px;
+  margin: 0 auto;
+}
+
+#education h2 {
+  font-size:28px;
+  margin-bottom: 24px;
+}
+
+#education p{
+  font-size:16px;
+  line-height:1.9;
+}
+
+
+@media (max-width: 600px) {
+  #education {
+    padding: 48px 24px;
+  }
+
+  #education h2 {
+    font-size: 24px;
+  }
+}
+
+#writing {
+  background-color:#f5f3ee;
+  padding:60px 40px;
+  max-width:900px;
+  margin: 0 auto;
+}
+
+#writing h2 {
+  font-size:28px;
+  margin-bottom: 24px;
+}
+
+#writing p{
+  font-size:16px;
+  line-height:1.9;
+}
+
+
+@media (max-width: 600px) {
+  #writing {
+    padding: 48px 24px;
+  }
+
+  #writing h2 {
+    font-size: 24px;
+  }
+}
+
+
+
 
