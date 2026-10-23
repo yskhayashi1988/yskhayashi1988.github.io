@@ -269,30 +269,30 @@ html {
   scroll-behavior: smooth;
 }
 
-#pfa-details {
+#article-details {
   background-color:#f5f3ee;
   padding:60px 40px;
   max-width:900px;
   margin: 0 auto;
 }
 
-#pfa-details h2 {
+#article-details h2 {
   font-size:28px;
   margin-bottom: 24px;
 }
 
-#pfa-details p{
+#article-details p{
   font-size:16px;
   line-height:1.9;
 }
 
 
 @media (max-width: 600px) {
-  #pfa-details {
+  #article-details {
     padding: 48px 24px;
   }
 
-  #pfa-details h2 {
+  #article-details h2 {
     font-size: 24px;
   }
 }
@@ -307,7 +307,7 @@ html {
   color:#527b91;
 }
 
-#pfa-details > a {
+#article-details > a {
   display:inline-block;
   margin-top:24px;
   color:#243746;
@@ -318,7 +318,7 @@ html {
   transition:color 0.3s ease;
 }
 
-#pfa-details > a:hover{
+#article-details > a:hover{
   color:#527b91;
 }
 
