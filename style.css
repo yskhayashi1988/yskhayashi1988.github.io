@@ -21,6 +21,8 @@ header {
   border-bottom:1px solid #ddd9d0;
   position:sticky;
   top:0;
+  background-color:#f5f3ee;
+  z-index:100;
 }
 
 nav {
@@ -260,4 +262,8 @@ footer p {
 
 .contact-button:hover {
   background-color:#36566b;
+}
+
+html {
+  scroll-padding-top: 80px;
 }
