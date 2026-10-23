@@ -19,6 +19,8 @@ p {
 header {
   padding:20px 40px;
   border-bottom:1px solid #ddd9d0;
+  position:sticky;
+  top:0;
 }
 
 nav {
