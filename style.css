@@ -268,3 +268,42 @@ html {
   scroll-padding-top: 80px;
   scroll-behavior: smooth;
 }
+
+#pfa-details {
+  background-color:#f5f3ee;
+  padding:60px 40px;
+  max-width:900px;
+  margin: 0 auto;
+}
+
+#pfa-details h2 {
+  font-size:28px;
+  margin-bottom: 24px;
+}
+
+#pfa-details p{
+  font-size:16px;
+  line-height:1.9;
+}
+
+
+@media (max-width: 600px) {
+  #pfa-details {
+    padding: 48px 24px;
+  }
+
+  #pfa-details h2 {
+    font-size: 24px;
+  }
+}
+
+.research-card h3 a {
+  color:#243746;
+  text-decoration:none;
+  transition:0.3s ease;
+}
+
+.research-card h3 a:hover{
+  color:#527b91;
+}
+
