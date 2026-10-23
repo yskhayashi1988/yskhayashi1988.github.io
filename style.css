@@ -270,30 +270,30 @@ html {
   scroll-behavior: smooth;
 }
 
-#clinical-research {
+#article-details {
   background-color:#f5f3ee;
   padding:60px 40px;
   max-width:980px;
   margin: 0 auto;
 }
 
-#clinical-research h2 {
+#article-details h2 {
   font-size:28px;
   margin-bottom: 24px;
 }
 
-#clinical-research p{
+#article-details p{
   font-size:16px;
   line-height:1.9;
 }
 
 
 @media (max-width: 600px) {
-  #clinical-research {
+  #article-details {
     padding: 48px 24px;
   }
 
-  #clinical-research h2 {
+  #article-details h2 {
     font-size: 24px;
   }
 }
@@ -308,7 +308,7 @@ html {
   color:#527b91;
 }
 
-#clinical-research > a {
+#article-details > a {
   display:inline-block;
   margin-top:24px;
   color:#243746;
@@ -319,7 +319,7 @@ html {
   transition:color 0.3s ease;
 }
 
-#clinical-research > a:hover{
+#article-details > a:hover{
   color:#527b91;
 }
 
