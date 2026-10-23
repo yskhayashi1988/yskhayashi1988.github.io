@@ -175,3 +175,41 @@ nav {
     font-size: 12px;
   }
 }
+
+.research-cards {
+  display:flex;
+  gap:24px;
+  max-width:900px;
+  margin:40px auto 0;
+}
+
+.research-card {
+  flex:1;
+  background-color:#f5f3ee;
+  padding:28px;
+  border-radius:4px;
+}
+
+.research-card h3 {
+  font-size:20px;
+  line-height:1.5;
+  margin-top:0;
+}
+
+.research-card p {
+  font-size:15px;
+  line-height:1.8;
+}
+
+
+@media (max-width: 600px) {
+  .research-cards {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .research-card {
+    padding: 24px;
+  }
+}
