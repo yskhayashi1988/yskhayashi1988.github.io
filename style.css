@@ -231,3 +231,16 @@ nav {
   box-shadow:0 8px 20px rgba(36, 55, 70, 0.12);
 }
 
+footer {
+  background-color:#172b3a;
+  color:#ffffff;
+  text-align:center;
+  padding:24px 20px;
+}
+
+footer p {
+  font-size:13px;
+  line-height:1.6;
+  margin:0;
+}
+
