@@ -160,3 +160,18 @@ nav {
     font-size:24px;
   }
 }
+
+
+@media (max-width:600px) {
+  #header {
+    padding:16px 20px;
+  }
+
+  .nav-links {
+    gap:14px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+}
