@@ -281,8 +281,8 @@ html {
 }
 
 #article-details h2 {
-  font-size:28px;
-  margin-bottom: 24px;
+  font-size:32px;
+  margin-bottom: 32px;
 }
 
 #article-details p{
@@ -457,7 +457,7 @@ html {
   grid-template-columns:140px 1fr;
   gap:26px;
   padding:40px 0;
-  border-top:1px solid #39483e;
+  border-top:1px solid #d9d2c5;
 }
 
 .publication-number {
@@ -485,7 +485,7 @@ html {
 
 .publication-authors,
 .publication-journals {
-  color:#c4cec5;
+  color:#66747a;
   font-size:15px;
   line-height:1.8;
 }
@@ -498,11 +498,12 @@ html {
 }
 
 .publication-tags span {
-  border:1px solid #526457;
+  border:1px solid #d9d2c5;
   border-radius:24px;
   padding:8px 16px;
   color:#c4cec5;
   font-size:13px;
+  background-color: #f5f3ee;
 }
 
 #article-details > a {
