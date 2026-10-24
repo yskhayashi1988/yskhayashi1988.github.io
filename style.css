@@ -274,8 +274,9 @@ html {
 
 #article-details {
   background-color:#f5f3ee;
+  color:#243746;
   padding:60px 40px;
-  max-width:900px;
+  max-width:1400px;
   margin: 0 auto;
 }
 
@@ -451,5 +452,78 @@ html {
   color:#527b91;
 }
 
+.publication {
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:26px;
+  padding:40px 0;
+  border-top:1px solid #39483e;
+}
 
+.publication-number {
+  color:#c99558;
+  font-size:18px;
+}
+
+.publication-content {
+  mind-width:0;
+}
+
+.publication-type {
+  color:#98a69a;
+  font-size:13px;
+  letter-spacing:0.08em;
+  margin:0 0 18px;
+}
+
+.publicaiton-content h3 {
+  color:#243746;
+  font-size:30px;
+  line-height:1.4;
+  margin:0 0 24px;
+}
+
+.publication-authors,
+.publication-journals {
+  color:#c4cec5;
+  font-size:15px;
+  line-height:1.8;
+}
+
+.publication-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-top:24px;
+}
+
+.publication-tags span {
+  border:1px solid #526457;
+  border-radius:24px;
+  padding:8px 16px;
+  color:#c4cec5;
+  font-size:13px;
+}
+
+#article-details > a {
+  display:inline-block;
+  margin-top:32px;
+  color:#c99558;
+  text-decoration:none;
+}
+
+@media (max-width: 600px) {
+  #article-details {
+    padding: 48px 24px;
+  }
+
+  .publication {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .publication-content h3 {
+    font-size: 24px;
+  }
+}
 
