@@ -483,6 +483,16 @@ html {
   margin:0 0 24px;
 }
 
+.publication-content h3 a {
+  color:#243746;
+  text-decoration:none;
+  transition:color 0.3s ease;
+}
+
+.publication-content h3 a:hover {
+  color:#527b91;
+}
+
 .publication-authors,
 .publication-journals {
   color:#66747a;
@@ -504,6 +514,22 @@ html {
   color:#c4cec5;
   font-size:13px;
   background-color: #f5f3ee;
+}
+
+
+.publication-link {
+  display:inline-block;
+  margin-top:20px;
+  color:#243746;
+  text-deocration:none;
+  font-size:14px;
+  border-bottom:1px solid #c99558;
+  padding-bottom:4px;
+  transition:color 0.3s ease;
+}
+
+.publication-link:hover {
+  color:#527b91;
 }
 
 #article-details > a {
