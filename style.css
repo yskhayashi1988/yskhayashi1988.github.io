@@ -754,7 +754,7 @@ html {
 
 
 /* Medical Writing & Editorial */
-#writing-details {
+#writing {
   max-width: 1400px;
   margin: 0 auto;
   padding: 60px 40px;
@@ -762,14 +762,14 @@ html {
   color: #243746;
 }
 
-#writing-details .section-eyebrow {
+#writing .section-eyebrow {
   color: #c99558;
   font-size: 12px;
   letter-spacing: 0.12em;
   margin: 0 0 14px;
 }
 
-#writing-details h2 {
+#writing h2 {
   color: #243746;
   font-size: 30px;
   line-height: 1.4;
