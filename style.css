@@ -93,7 +93,8 @@ nav {
 #profile h2 {
   font-size:28px;
   font-weight:700;
-  margin-bottom:24px;
+  max-width:900px;
+  margin: 9 auto 24px;
 }
 
 #profile p {
