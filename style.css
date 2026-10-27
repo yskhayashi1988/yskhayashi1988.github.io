@@ -755,6 +755,7 @@ html {
 #writing .writing-item h3 a:hover {
   color: #c99558;
   text-decoration: none;
+}
 
 @media (max-width: 600px) {
   #writing-details {
@@ -839,16 +840,17 @@ html {
   margin: 0;
 }
 
-#latest-news .news-content h3 a,
-#latest-news .news-content h3 a:visited {
+#latest-news .news-content a,
+#latest-news .news-content a:visited {
   color: #243746;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-#latest-news .news-content h3 a:hover {
+#latest-news .news-content a:hover {
   color: #c99558;
   text-decoration: none;
+}
 
 @media (max-width: 600px) {
   #latest-news {
