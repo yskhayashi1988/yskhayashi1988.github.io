@@ -751,7 +751,7 @@ html {
 }
 
 #education > a:hover {
-  color: #c99558
+  color: #c99558;
   text-decoration:none;
 }
 
@@ -850,14 +850,17 @@ html {
   margin: 12px 0;
 }
 
-#writing .writing-item p a,
-#writing .writing-item p a:visited {
+#writing .writing-item .writing-title a,
+#writing .writing-item .writing-title a:link,
+#writing .writing-item .writing-title a:visited {
   color: #243746;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-#writing .writing-item a:hover {
+#writing .writing-item .writing-title a:hover,
+#writing .writing-item .writing-title a:focus-visible,
+#writing .writing-item .writing-title a:active {
   color: #c99558;
   text-decoration: none;
 }
