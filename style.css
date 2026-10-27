@@ -68,8 +68,18 @@ nav {
   font-weight:400;
 }
 
-.hero-button　{
+.hero-button,
+.hero-button:visited {
   color: #c99558;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-button:hover {
+  color: #f0c78e;
+  text-decoration: none;
 }
 
 .eyebrow {
