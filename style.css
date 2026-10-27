@@ -359,6 +359,12 @@ html {
   margin: 0 0 14px;
 }
 
+#article-details .section-eyebrow {
+  color: #c99558;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  margin: 0 0 14px;
+}
 
 @media (max-width: 600px) {
   #article-details {
