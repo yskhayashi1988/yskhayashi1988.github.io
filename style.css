@@ -754,7 +754,7 @@ html {
   transition: color 0.3s ease;
 }
 
-#writing .writing-item h3 a:hover {
+#writing .writing-item a:hover {
   color: #c99558;
   text-decoration: none;
 }
