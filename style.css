@@ -674,7 +674,11 @@ html {
   color: #c99558;
   font-size: 12px;
   letter-spacing: 0.12em;
-  margin: 0 0 14px;
+  margin: 0 0 8px;
+}
+
+.education-group h3 {
+  margin-top:0;
 }
 
 #education h2 {
