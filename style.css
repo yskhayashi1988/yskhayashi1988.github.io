@@ -352,6 +352,13 @@ html {
   line-height:1.9;
 }
 
+.article-type p{
+  color: #c99558;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  margin: 0 0 14px;
+}
+
 
 @media (max-width: 600px) {
   #article-details {
