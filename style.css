@@ -635,7 +635,8 @@ html {
   margin: 4px 0;
 }
 
-#education > a {
+#education > a,
+#education > a:visited {
   display: inline-block;
   margin-top: 24px;
   padding-bottom: 5px;
@@ -647,7 +648,8 @@ html {
 }
 
 #education > a:hover {
-  color: #527b91;
+  color: #c99558
+  text-decoration:none;
 }
 
 @media (max-width: 600px) {
